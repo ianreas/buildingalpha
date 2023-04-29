@@ -1,0 +1,42 @@
+.nav-wrapper {
+  width: 100%;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: red;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  height: 50px;
+  overflow: hidden;
+}
+
+.navbar ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  justify-self: end;
+  grid-gap: 10vw;
+  
+}
+
+.nav-item a {
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.3s ease-out;
+  grid-gap: 10px;
+}
+
+.nav-item a:hover {
+  color: #3498db;
+}
+
+.about-page-wrapper{
+  display: grid;
+  place-self: center;
+}
