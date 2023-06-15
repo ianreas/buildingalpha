@@ -57,7 +57,7 @@ export default function TickerNews(){
                 <div className='tickernews-item-sentiment'>{news.sentiment} sentiment {news.sentiment=='Positive' ? '😀' : news.sentiment === 'Neutral' ? "😐" : '☹️' }</div>
                 <div className='tickernews-item-tickers'>
                     {news.tickers?.map((ticker, index) => (
-                        <div className='tickernews-item-tickers-ticker'>{ticker}</div>
+                        <div key={index} className='tickernews-item-tickers-ticker'>{ticker}</div>
                     ))}
                 </div>
                 <div>

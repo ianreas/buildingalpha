@@ -32,9 +32,9 @@ export default function NewThreeD(){
     return (
         <div className='threed-component-wrapper'>
         <div className='threed-component-text'>
-            <h1>Plot Ticker's IV Surface.</h1>
+            <h1>Plot Ticker&apos; IV Surface.</h1>
             <p>The volatility surface is a three-dimensional plot showing the implied
-            <br></br>volatilities of a stock's options that are listed on it across different strike prices
+            <br></br>volatilities of a stock&apos; options that are listed on it across different strike prices
             <br></br>and expirations.
             </p>
         </div>
