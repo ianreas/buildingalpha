@@ -70,8 +70,8 @@ const handleStartSubmit = (event) => {
         </div>
         <div className='ai_wrapper_div'>
           <div className='message-list'>
-            {messages.map((message) => (message.text &&
-              <div 
+            {messages.map((message, index) => (message.text &&
+              <div key={index}
               className={`message ${message.user ==='Mara' ? 'ai-style' : 'user-style'}`}
               >
                 <p style={{marginLeft: '5px'}}>{message.user}: {message.text}</p>
