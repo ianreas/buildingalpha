@@ -1,9 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .nav-wrapper {
   width: 100%;
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  top: 0;
-  background-color: red;
+  
+  background-color:#D5FFD9;
+  display: flex;
+  
+}
+
+html, body {
+  margin:0;
+  padding:0;
+  font-family: 'Open Sans', sans-serif;
+}
+.layout-wrapper{
+  box-sizing: border-box;
+  margin: 0px;
 }
 
 .navbar {
@@ -12,12 +26,13 @@
   align-items: center;
   height: 50px;
   overflow: hidden;
+  
 }
 
 .navbar ul {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(5,1fr);
+  grid-template-columns: repeat(7,1fr);
   justify-self: end;
   grid-gap: 10vw;
   
@@ -40,3 +55,470 @@
   display: grid;
   place-self: center;
 }
+
+table{
+  border: 1px solid black;
+}
+
+td{
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  padding: 5px;
+}
+
+.red-line {
+  border-bottom: 2px solid red;
+  background-color: pink;
+}
+
+.green-line{
+  border: 2px solid green;
+  background-color: lightgreen;
+}
+
+.datelist:hover{
+  cursor:pointer;
+  font-size: 1.1em; /* Increase the font size */
+  text-decoration: underline; /* Add an underline effect */
+}
+
+.dark-red{
+  background-color: darkred;
+}
+
+.medium-red{
+  background-color: red;
+}
+
+ .light-red{
+  background-color: lightcoral;
+}
+
+ .light-green{
+  background-color: lightgreen;
+}
+
+ .green{
+  background-color: green;
+}
+
+.footer{
+  background-color: red;
+}
+
+.footer-item > *{
+  text-decoration: none;
+}
+
+.footer-item{
+  list-style: none;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  transition: all 3s ease;
+}
+
+.search-bar.expanded {
+  width: 200px; /* Adjust the width as per your design */
+}
+
+.search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.search-input {
+  width: 0;
+  padding: 5px;
+  transition: width 3s linear;
+  overflow: hidden;
+}
+
+.search-bar.expanded .search-input {
+  width: 100%; /* Adjust the width as per your design */
+  margin-left: 10px; /* Add any additional spacing you want */
+}
+
+.navbar .search-bar{
+  flex: 1;
+}
+
+.search-bar.expanded{
+  -webkit-transition: -webkit-transform 1s linear;
+}
+
+.layout-wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+
+.content {
+  height: 80vw;
+  flex-grow: 1;
+  margin-bottom: 30vh;
+
+}
+
+.footer {
+  flex-shrink: 0;
+  margin-top: auto;
+}
+
+.indexpage{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: stretch;
+}
+
+.indexpage > *{
+  border: 1px solid gray;
+}
+
+.tickernews-component{
+  width: 100%;
+ height: auto;
+  
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+
+}
+
+.tickernews-component-wrapper{
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+}
+
+.tickernews-item{
+  margin-bottom: 15px;
+  border-bottom: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.tickernews-item-title{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.carousel-congress{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.carousel-congress-table{
+  
+}
+
+.carousel-mentions{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel-mentions-table{
+  align-self: center;
+}
+
+.carousel-insider{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sector-performance{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.longcalloption-wrapper > h3:hover{
+  cursor: pointer;
+}
+
+.longputoption-wrapper  > h3:hover{
+  cursor: pointer;
+}
+
+.longcalloption-wrapper{
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+
+.longputoption-wrapper{
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.tradingview_stock_screener_div{
+  display: flex;
+  justify-content: center;
+}
+
+.ai_component_div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.ai-style{
+  background-color: #D3D3D3;
+  margin: 0;
+  
+}
+
+.user-style{
+  background-color: #C0AFE2;
+  margin: 0;
+  box-sizing: border-box;
+  
+}
+
+.ai_wrapper_div{
+  border: 1px solid salmon;
+  border-radius: 20px;
+  
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: #D3D3D3;
+}
+
+.ai_input_wrapper > input{
+  width: 80%;
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+
+.message-list{
+  display: flex;
+  flex-direction: column;
+}
+
+.ai_input_wrapper{
+  
+}
+
+.indexpage > *{
+  margin: 5px;
+ border-radius: 10px;
+ background-color: white;
+}
+
+.indexpage{
+margin: 0;
+padding: 0;
+background: linear-gradient(to right, #A8BCA1, #C2EABA )
+}
+
+.content{
+  background-color: #A8BCA1;
+}
+
+.footer-in-layout{
+  flex-shrink: 0;
+  margin-top: auto;
+  justify-self: end;
+  height: 100%;
+  background-color: #A8BCA1;
+}
+main{
+  flex-grow: 1;
+  min-height: 100vh;
+}
+
+.footer{
+  background-color: #D5FFD9;
+}
+
+.tickernews-item-title-link{
+  text-decoration: none;
+  color: inherit;
+}
+
+.ticker-search-wrapper > *{
+  margin: 20px;
+}
+
+.tradingview-tickersearch-wrapper{
+  display: flex;
+  justify-content: column;
+}
+
+.individual-tickernews-component{
+  display: flex;
+  justify-content: space-between;
+}
+
+.individual-tickernews-component-wrapper{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.individual-tickernews-component-wrapper > h1{
+  margin-left: 5vw;
+  text-decoration: underline;
+}
+
+.individual-tickernews-item{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.individual-tickernews-item-title-link{
+  text-decoration: none;
+}
+
+body{
+  background-color: #A8BCA1;
+}
+
+.threed-component-wrapper{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+.threed-search{
+  
+}
+
+.threed-searchplot-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.threed-component-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ai-component-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ai_component_div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ai_wrapper_div{
+  height: 50vh;
+  overflow: auto;
+  
+}
+
+.message-list{
+  overflow: auto;
+}
+
+.signIn-buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.signIn-buttons-wrapper{
+
+}
+
+.signIn-buttons > button {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 15px;
+  
+ 
+}
+
+.signIn-buttons > button > p{
+  transition: all 0.3s;
+  border-bottom: 1px solid green;
+}
+
+.signIn-buttons > button > p:hover{
+  font-size: 40px;
+}
+
+.pick-username-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-signout-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.signout-page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.btn-signout{
+  border-radius: 10px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

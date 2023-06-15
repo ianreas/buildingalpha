@@ -2,7 +2,7 @@
   "name": "nextclient",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:5000",
+  "proxy": "https://buildingalpha-new.herokuapp.com",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,11 +10,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/react-plotly.js": "^2.6.0",
     "dangerously-set-html-content": "^1.0.13",
+    "finnhub": "^1.2.17",
+    "firebase": "^9.22.1",
+    "lodash.debounce": "^4.0.8",
     "next": "13.3.1",
+    "palm": "^0.0.24",
+    "plotly.js": "^2.23.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-responsive-carousel": "^3.2.23"
+    "react-firebase-hooks": "^5.1.1",
+    "react-plotly.js": "^2.6.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "eslint": "8.39.0",

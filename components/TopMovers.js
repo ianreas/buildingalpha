@@ -7,7 +7,7 @@ export default function TopMovers(){
 
     useEffect(() => {
     async function fetchTopMovers(){
-        const response = await fetch(`http://127.0.0.1:5000/getTopMovers`)
+        const response = await fetch(`https://buildingalpha-new.herokuapp.com/getTopMovers`)
         let data = await response.json()
           console.log(data)
         setTopMovers(data)
@@ -19,13 +19,19 @@ export default function TopMovers(){
       
 
     return (
-        <div>
-            <h1>Top Movers</h1>
-            <ul>
+        <div style={{display: 'flex',flexDirection: 'column', alignItems: 'center'}}>
+         
+            <h1 style={{borderBottom: '2px solid black', width: "100%", textAlign: 'center'}}>Top Movers</h1>
+            <ul style={{ listStyle: 'none', width: '80%' }}>
                 {topMovers.map((topMover, index) => (
-                    <li key={index}> {topMover[1]} - {topMover[0]}</li>
+                    <li key={index} >
+                        <div style={{marginBottom: '10px',border: "1px solid black"}}>
+                            <p style={{marginLeft: '5px'}}>{topMover[1]}   -   <span style={{backgroundColor: 'lightGreen'}}>{topMover[0]}</span></p>
+                        </div>
+                        </li>
                     ))}
             </ul>
+    
         </div>
     )
 }

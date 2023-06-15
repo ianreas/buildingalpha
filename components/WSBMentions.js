@@ -6,7 +6,7 @@ export default function WSBMentions(){
 
     useEffect(() => {
         async function fetchWSB(){
-            const response = await fetch(`http://127.0.0.1:5000/wsbMentions`)
+            const response = await fetch(`https://buildingalpha-new.herokuapp.com/wsbMentions`)
             let data = await response.json()
               console.log(data)
             setData(data?.results?.slice(0, 6))
@@ -15,8 +15,10 @@ export default function WSBMentions(){
     }, [])  
 
     return (
-        <div>
-            <table>
+        <div className='carousel-mentions'>
+
+            <h1>Mentions of Stocks on popular discussion forums</h1>
+            <table id='carousel-mentions-table'>
                 <thead>
                     <tr>
                         <th>Ticker</th>

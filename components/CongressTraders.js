@@ -6,7 +6,7 @@ export default function CongressTraders(){
     useEffect(() => {
         try {
         async function fetchCongressTraders(){
-            const response = await fetch(`http://127.0.0.1:5000/getCongressTraders`)
+            const response = await fetch(`https://buildingalpha-new.herokuapp.com/getCongressTraders`)
             let data = await response.json()
             console.log(data)
             
@@ -20,8 +20,8 @@ export default function CongressTraders(){
     , [])
 
     return (<div className='carousel-congress'>
+        <h1 style={{borderBottom: '2px solid black', width: "100%", textAlign: 'center'}}>Congress Traders</h1>
         {congressTraders!==undefined ? 
-    
                      <table>
                         <thead>
                             <tr>
@@ -94,8 +94,10 @@ export default function CongressTraders(){
                                 <td>
                                     {congressTraders[3][5]} ({congressTraders[3][6]})
                                 </td>
+
                             </tr>
+                            
                         </tbody>
-                    </table> 
-                 : <div>Loading...</div>} </div>)
+                    </table>
+                 : <div>Loading...</div>}</div>)
 }
