@@ -56,7 +56,7 @@ export default function IndividualTickerNews(ticker){
                 <div className='individual-tickernews-item-sentiment'>{news.sentiment} sentiment</div>
                 <div className='individual-tickernews-item-tickers'>
                     {news.tickers?.map((ticker, index) => (
-                        <div className='individual-tickernews-item-tickers-ticker'>{ticker}</div>
+                        <div key={index} className='individual-tickernews-item-tickers-ticker'>{ticker}</div>
                     ))}
                 </div>
                 <div className='individual-tickernews-image-container'>
