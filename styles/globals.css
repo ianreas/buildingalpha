@@ -467,12 +467,13 @@ body{
 }
 
 .signIn-buttons > button > p{
-  transition: all 0.3s;
-  border-bottom: 1px solid green;
+  transition: ease 0.3s;
+  color: #3498db;
+  font-size: 40px;
 }
 
 .signIn-buttons > button > p:hover{
-  font-size: 40px;
+  
 }
 
 .pick-username-wrapper{

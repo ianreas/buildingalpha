@@ -45,8 +45,8 @@ export default function TradingViewStockScreener(){
   );
 
     return (
-        <div className='tradingview_stock_screener_div'>
-            <div className="tradingview-widget-container" ref={contariner}>
+        <div className='tradingview_stock_screener_div' style={{display: 'flex', alignItems: 'center'}}>
+            <div className="tradingview-widget-container" ref={contariner} >
       <div className="tradingview-widget-container__widget" ref={wrapperRef}></div>
       <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span className="blue-text">Track all markets</span></a> on TradingView</div>
     </div>

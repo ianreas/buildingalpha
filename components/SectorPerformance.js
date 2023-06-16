@@ -1,7 +1,9 @@
 import {useState, useEffect} from 'react'
+import Skeleton from 'react-loading-skeleton'
 
 export default function SectorPerformance(){
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function fetchSectorPerformance(){
@@ -9,6 +11,7 @@ export default function SectorPerformance(){
             const data = await response.json()
             console.log(data)
             setData(data)
+            setLoading(false)
             
         }
         //add the function here
@@ -16,6 +19,8 @@ export default function SectorPerformance(){
     },  [])
 
     return(
+        <>
+        {loading ? <Skeleton count={18}/> :
         <div className='sector-performance'>
             <h1>Sector Performance</h1>
             <table>
@@ -35,6 +40,8 @@ export default function SectorPerformance(){
                 </tbody>
             </table>
         </div>
+        }
+        </>
     )
 
 }

@@ -1,9 +1,14 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import Skeleton from 'react-loading-skeleton'
+
+
 
 
 export default function TopMovers(){
     const [topMovers, setTopMovers] = useState([])
+    const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
     async function fetchTopMovers(){
@@ -11,6 +16,7 @@ export default function TopMovers(){
         let data = await response.json()
           console.log(data)
         setTopMovers(data)
+        setLoading(false)
       }
       fetchTopMovers()
     }, [])
@@ -19,6 +25,9 @@ export default function TopMovers(){
       
 
     return (
+        
+         <>
+         {loading ? <Skeleton count={18}/> :
         <div style={{display: 'flex',flexDirection: 'column', alignItems: 'center'}}>
          
             <h1 style={{borderBottom: '2px solid black', width: "100%", textAlign: 'center'}}>Top Movers</h1>
@@ -29,9 +38,12 @@ export default function TopMovers(){
                             <p style={{marginLeft: '5px'}}>{topMover[1]}   -   <span style={{backgroundColor: 'lightGreen'}}>{topMover[0]}</span></p>
                         </div>
                         </li>
-                    ))}
+                    ))} 
             </ul>
     
         </div>
+            }
+        </>
+    
     )
 }

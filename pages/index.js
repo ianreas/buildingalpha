@@ -9,6 +9,8 @@ import TickerNews from '../components/TickerNews'
 import TradingViewStockScreener from '../components/TradingViewStockScreener'
 import Intro from '../components/Intro'
 import SectorPerformanceFetch from '../components/SectorPerformanceFetch'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function Home() {
     
@@ -18,7 +20,7 @@ export default function Home() {
     <TopMovers className='topmovers-component'/>
     <Datasets className='datasets-component'/>
     <TickerNews className='tickernews-component'/>
-    <SectorPerformance className='sectorperform-component'/>
+    {<SectorPerformance className='sectorperform-component'/> || <Skeleton count={5}/>}
     <TradingViewStockScreener />
     <Intro/>
     <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>

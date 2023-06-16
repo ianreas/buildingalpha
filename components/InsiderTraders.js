@@ -1,7 +1,9 @@
 import {useEffect, useState} from 'react'
+import Skeleton from 'react-loading-skeleton'
 
 export default function InsiderTraders(){
     const [insiderTraders, setInsiderTraders] = useState()
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         try {
@@ -11,6 +13,7 @@ export default function InsiderTraders(){
             console.log(data)
             
             setInsiderTraders(data?.slice(0,10))
+            setLoading(false)
 
           }
           fetchInsiderTraders()
@@ -21,6 +24,8 @@ export default function InsiderTraders(){
 
 
     return (
+      <>
+      {loading ? <Skeleton count={18}/> :
         <div className='carousel-insider'>
           <h1 style={{borderBottom: '2px solid black', width: "100%", textAlign: 'center'}}>Insider Traders</h1>
             <table>
@@ -38,7 +43,7 @@ export default function InsiderTraders(){
                 {insiderTraders?.map((element, index) => (
                  
                   <tr key={index}>
-                    {element.length === 7 ? (
+                    {element.length === 8 ? (
                       <>
                         <td>{element[0]}<br/>
                      <span>{element[1]}</span>
@@ -64,7 +69,7 @@ export default function InsiderTraders(){
               </tbody>
             </table>
         </div>
-    )
+ } </>)
 }
 
 //{insiderTraders?.map((result, index) => )

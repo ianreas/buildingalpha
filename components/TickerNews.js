@@ -1,10 +1,12 @@
 import {useState, useEffect} from 'react'
 import Image from 'next/image'
+import Skeleton from 'react-loading-skeleton'
 
 
 export default function TickerNews(){
     const [tickerNews, setTickerNews] = useState([])
     const [timeAgo, setTimeAgo] = useState()
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         async function fetchTickerNews(){
@@ -12,6 +14,7 @@ export default function TickerNews(){
             const data = await response.json()
             console.log(data.data)
             setTickerNews(data.data)
+            setLoading(false)
         }
         fetchTickerNews()
     }, [])
@@ -46,6 +49,8 @@ export default function TickerNews(){
 
    
     return (
+      <>
+      {loading ? <Skeleton count={18}/> : 
         <div className='tickernews-component'>
             <div className='tickernews-component-wrapper'>
             <h1 style={{borderBottom: '2px solid black', width: "100%", textAlign: 'center'}}>News</h1>
@@ -67,5 +72,7 @@ export default function TickerNews(){
                 </div>
             ))} 
         </div></div>
+                    }
+                    </>
     )
 }

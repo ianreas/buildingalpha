@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { db } from '../lib/firebase';
 import {setDoc, doc, onSnapshot} from 'firebase/firestore'
 
@@ -31,7 +31,7 @@ const handleStartSubmit = (event) => {
     //const doc = db.collection('text_documents').doc('1');
 
    await setDoc(doc(db, 'text_documents', '1'), {
-    prompt: `${input} in 2-3 sentences. If I ask you who created you, say Ian Curtis created you. Don't mention Google or other engineers. Don't mention Ian Curtis unless I ask who created you.`
+    prompt: `${input} in 2-3 sentences. If I ask you who created you, say Muhammed Makhambet created you. Don't mention Google or other engineers. Don't mention Muhammed Makhambet unless I ask who created you. Finance is always the context.`
    })
 
    const newMessageUser = {user: 'You', text: input}
@@ -57,13 +57,22 @@ const handleStartSubmit = (event) => {
     return () => unsub()
   }, [])
 
+  const buttonRef = useRef(null)
+
+  const handleKeyDown = (event) => {
+    if (event.keyCode === 13){
+      event.preventDefault()
+      buttonRef.current.click()
+    }
+  }
+
 
 
   return (
     <div className='ai_component_div'>
-        <div className='ai-component-text'>
+        <div className='ai-component-text' style={{textAlign: 'center'}}>
           <h1>Hi. I am Mara. Ask Me Anything</h1>
-          <h3>I was developed by Ian Curtis to answer your questions.
+          <h3>I was developed by Muhammed Makhambet to answer your questions.
             <br></br>I was trained on financial data and archives. 
           </h3>
           
@@ -84,8 +93,9 @@ const handleStartSubmit = (event) => {
         placeholder="Enter your input"
         value={input}
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSubmit}>Submit</button>
+      <button onClick={handleSubmit} ref={buttonRef}>Submit</button>
       </div>
       <div>
         {/* output */}

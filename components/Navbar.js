@@ -49,7 +49,7 @@ export default function Navbar(){
             </nav>
             <div className={`search-bar ${expanded ? 'expanded' : ''}`}>
                 <button className="search-button" onClick={handleButtonClick}>
-                    Search
+                    Search Tickers
                 </button>
                 {expanded && (
                     <input
