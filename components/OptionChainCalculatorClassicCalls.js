@@ -194,7 +194,7 @@ export default function OptionChainCalculatorClassicCalls(){
                 <>
                 <p>
                 Click on one of these options to get the options matrix. Options Matrix will allow you to accurately
-                <br></br> predict the option price given the stock price. This website can't predict that for you.
+                <br></br> predict the option price given the stock price. This website can&apos;t predict that for you.
                 <br></br> Invest only according to your own risk tolerance, please. Do not gamble.
                 </p>
                 <table>
