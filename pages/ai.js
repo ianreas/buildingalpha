@@ -31,7 +31,7 @@ const handleStartSubmit = (event) => {
     //const doc = db.collection('text_documents').doc('1');
 
    await setDoc(doc(db, 'text_documents', '1'), {
-    prompt: `${input} in 2-3 sentences. If I ask you who created you, say Muhammed Makhambet created you. Don't mention Google or other engineers. Don't mention Muhammed Makhambet unless I ask who created you. Finance is always the context.`
+    prompt: `${input} in 2-3 sentences. Financial Context.`
    })
 
    const newMessageUser = {user: 'You', text: input}
@@ -95,7 +95,9 @@ const handleStartSubmit = (event) => {
         onChange={handleInputChange}
         onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSubmit} ref={buttonRef}>Submit</button>
+      <button onClick={handleSubmit}  className='button-ai' ref={buttonRef} style={{backgroundColor: 'transparent', border: 'none', outline: 'none'}}>
+        <img src='/buttonarrow.png' style={{}}></img>
+      </button>
       </div>
       <div>
         {/* output */}

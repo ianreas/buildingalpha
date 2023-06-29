@@ -46,23 +46,23 @@ export default function IndividualTickerNews(ticker){
 
     return (
         <div className='individual-tickernews-component-wrapper'>
-          <h1>News</h1>
+          <h1 style={{color: "#e1e1e1", textAlign: 'center'}}>News</h1>
         <div className='individual-tickernews-component'>
             {tickerData?.map((news, index) => (
                 <div key={index} className='individual-tickernews-item'>
                 <div className='individual-tickernews-item-title'>
-                    <a className='individual-tickernews-item-title-link' href={news.news_url}>{news.title}</a>
+                    <a className='individual-tickernews-item-title-link' style={{color: '#e1e1e1'}}href={news.news_url}>{news.title}</a>
                 </div>
-                <div className='individual-tickernews-item-sentiment'>{news.sentiment} sentiment</div>
+                <div className='individual-tickernews-item-sentiment' style={{color: '#e1e1e1'}}>{news.sentiment} {news.sentiment=='Positive' ? '😀' : news.sentiment === 'Neutral' ? "😐" : '☹️' } sentiment</div>
                 <div className='individual-tickernews-item-tickers'>
                     {news.tickers?.map((ticker, index) => (
-                        <div key={index} className='individual-tickernews-item-tickers-ticker'>{ticker}</div>
+                        <div key={index} className='individual-tickernews-item-tickers-ticker' style={{color: '#e1e1e1'}}>{ticker}</div>
                     ))}
                 </div>
                 <div className='individual-tickernews-image-container'>
                     <img src={news.image_url} alt='article image' width={200} height={200}/>
                 </div>
-                <div>{calculateTimePassed(news.date)}</div>
+                <div style={{color: '#e1e1e1'}}>{calculateTimePassed(news.date)}</div>
                 </div>
             ))} 
         </div> 

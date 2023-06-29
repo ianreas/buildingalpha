@@ -40,8 +40,8 @@ export default function NewThreeD(){
         </div>
         <div className='threed-searchplot-wrapper'>
             <div className='threed-search'>
-            <form onSubmit={handleSubmit}>
-            <label htmlFor="title" className="form-label">Ticker: </label>
+            <form onSubmit={handleSubmit} style={{display: 'flex', alignItems: 'center'}}>
+            <label htmlFor="title" className="form-label" style={{color: "#D3D3D3", marginRight: '0.5rem'}}>Ticker:  </label>
             <input 
             type="text"
             className="form-control" 
@@ -50,13 +50,36 @@ export default function NewThreeD(){
             onChange={(e)=>setTicker(e.target.value)}
             required
             />
-            <input type='submit' value='Submit'/>
+            {/* <input type='submit' value='Submit'/> */}
+            <button className='arrowbuton' type='submit' value='Submit' style={{backgroundColor: "#1a1e26", outline: 'none', border: 'none', position: 'relative'}}>
+                <img src='/buttonarrow.png' className='faviconbutton'/>
+            </button>
             </form>
             </div>
             <div className='threed-plot-wrapper'>
              <Plot
             data = {[twoDArray]}
             layout={{ title: 'IV Surface',
+            plot_bgcolor: '#1a1e26',
+            paper_bgcolor:"#1a1e26",
+            font: {
+                color: "white"
+            },
+            coloraxis: {
+                colorbar: {
+                    bordercolor: "#6e889f",
+                    outlinecolor: "#6e889f",
+                    tickcolor: "#6e889f",
+                    tickfont: {
+                        color: "#6e889f"
+                    },
+                    title: {
+                        font: {
+                            color: "#6e889f"
+                        }
+                    }
+                }
+            },
             scene: {
                 legend: {
                     orientation: 'h', 
@@ -69,12 +92,14 @@ export default function NewThreeD(){
             },
             autosize: true,
             
+            
             margin: {
                 l: 50,
                 r: 50,
                 b: 50,
                 t: 50,
                 pad: 4}}}
+                
             />
             </div>
         </div>

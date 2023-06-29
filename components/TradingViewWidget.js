@@ -32,7 +32,7 @@ function TradingViewWidget(ticker) {
           "width": 1000,
           "height": 500,
           "locale": "en",
-          "colorTheme": "light",
+          "colorTheme": "dark",
           "autosize": false,
           "showVolume": false,
           "showMA": false,

@@ -20,17 +20,17 @@ export default function WSBMentions(){
             <h1>Mentions of Stocks on popular discussion forums</h1>
             <table id='carousel-mentions-table'>
                 <thead>
-                    <tr>
+                    <tr className='wsb-table-head-tr'>
                         <th>Ticker</th>
                         <th>Mentions</th>
                         <th>Name</th>
                         <th>Rank 24h ago</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className='wsb-mentions-tbody'>
                     { data?.map((result, index) => (
                         <tr key={index}>
-                            <td>{result.ticker}</td>
+                            <td id="wsb-td-stockname">{result.ticker}</td>
                             <td>{result.mentions}</td>
                             <td>{result.name}</td>
                             <td>{result.rank_24h_ago}</td>

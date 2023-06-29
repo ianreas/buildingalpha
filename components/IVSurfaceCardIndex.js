@@ -1,7 +1,7 @@
 export default function IVSurfaceIndexPageAbout(){
     return(
-        <div>
-           <img src='nextclient\public\ivsurface.png'></img>
+        <div style={{backgroundColor: '#1a1e26'}}>
+           <img src='nextclient\public\iv_surface_new.png'></img>
         </div>
     )
 }

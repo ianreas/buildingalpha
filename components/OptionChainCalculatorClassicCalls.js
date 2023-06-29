@@ -28,6 +28,10 @@ export default function OptionChainCalculatorClassicCalls(){
 
     const [ticker, setTicker] = useState('');
 
+    const handlePriceCellClick = () => {
+
+    }
+
     const handleChange = (event) => {
         setTicker(event.target.value.toUpperCase());
     };
@@ -116,23 +120,42 @@ export default function OptionChainCalculatorClassicCalls(){
                 {optionsMatrix[1].map((date, index) => (
                     <th key={index}>{date[0]}</th>
                 ))}
-                <th>Possible Prices</th>
+                <th>Possible Stock Prices</th>
             </tr>
         )
     }
+
+    const showPriceAnalysis = (price) => {
+        return (
+            <div>
+            {price ? <div>
+                Meow
+               <form>
+
+                </form> 
+            </div> : null}
+            </div>
+        )
+    } 
+
+    const [showAnalysis, setShowAnalysis] = useState(false)
 
 
     const renderTableRows = () => {
         return optionsMatrix[0].map((row, rowIndex) => (
             <tr key={rowIndex}>
                 {row.map((cell, columnIndex) => (
-                    <td key={columnIndex} className={getCellClassName(cell)}>{cell}</td>
+                    <td key={columnIndex} className={getCellClassName(cell)} onClick={() => setShowAnalysis(true)}>${cell}<button className='price-cell-button' onClick={() => showPriceAnalysis()}style={{backgroundColor: 'transparent', border: 'none'}}><p style={{margin: "0%", fontSize: '0.8rem'}}>Profit/Loss: ${roundToHundredth((cell-selectedOptionPrice)*100)}/option</p></button></td>
                 ))}
-                <td>{optionsMatrix[2][rowIndex]}</td>
+                <td>${optionsMatrix[2][rowIndex]}</td>
             </tr>
         ))
         
       };
+
+      function roundToHundredth(number) {
+        return Math.round(number * 100) / 100;
+      }
 
 
 
@@ -140,26 +163,40 @@ export default function OptionChainCalculatorClassicCalls(){
         
 
     
-    return (<div>
-            <div>
-            <form onSubmit={handleTickerSubmit}>
+    return (<div className='classic-calls-wrap'> 
+            <h1>Long Call Strategy</h1>
+            <div style={{display: 'flex', flexDirection: 'column'}}>
+                <div style={{display: 'block'}}>
+            <form onSubmit={handleTickerSubmit} style={{display: 'flex', alignItems: 'center'}}>
                     <label>
                         Select Ticker
-                        <input type='text' value={ticker} onChange={handleChange} />
+                        <input type='text' value={ticker} onChange={handleChange} style={{marginLeft: '0.5rem'}}/>
                     </label>
-                    <input type='submit' value='Submit' />
+                    <button className='arrowbuton' type='submit' value='Submit' style={{backgroundColor: "#1a1e26", outline: 'none', border: 'none', position: 'relative', top: '2px'}}>
+                <img src='/buttonarrow.png' classNAme='faviconbutton'/>
+            </button>
+                    {/* <input type='submit' value='Submit' /> */}
                 </form>
+                </div>
         { tickerPrice ? <p>Ticker Price: {tickerPrice}</p> : null}
-                {tickerPrice ? <h2>Choose The Expiration Date</h2> : null}
-                {optionDates ? <ul>
+        
+                
+                {optionDates ? <><h2 style={{textAlign: 'center'}}>Choose The Expiration Date</h2><ul className='datelist-ul-wrapper'>
                     {optionDates.map((item, index) => (
                         <li className='datelist' key={index} onClick={() => handleDateClick(index)}>{index}. {item}</li>
                     ))}
-                </ul> : null}
+                </ul></> : null}
                 
             </div>
             <div class='optionschain-container'>
+                
                 {optionsChainData ?
+                <>
+                <p>
+                Click on one of these options to get the options matrix. Options Matrix will allow you to accurately
+                <br></br> predict the option price given the stock price. This website can't predict that for you.
+                <br></br> Invest only according to your own risk tolerance, please. Do not gamble.
+                </p>
                 <table>
                     <thead>
                         <tr>
@@ -175,24 +212,28 @@ export default function OptionChainCalculatorClassicCalls(){
                         {Object.entries(optionsChainData).map(([row, columns]) => (
                             <tr key={row} >
                                 <td>{row}</td>
-                                <td>{columns["strike"]}</td>
+                                <td>${columns["strike"]}</td>
                                 <td>{columns["contractSymbol"]}</td>
-                                <td>
-                                    <button onClick={() => handleCellClick(columns["lastPrice"], columns['strike'], columns['impliedVolatility'], columns['contractSymbol'])}>
-                                        {columns["lastPrice"]}
+                                <td style={{width: "20%"}}>
+                                    <button className='option-price-cell'style={{backgroundColor: 'transparent', border: 'none', color: '#D3D3D3'}} onClick={() => handleCellClick(columns["lastPrice"], columns['strike'], columns['impliedVolatility'], columns['contractSymbol'])}>
+                                        ${columns["lastPrice"]}
                                     </button>
                                 </td>
-                                <td>{columns["percentChange"]}</td>
-                                <td className={columns.inTheMoney.toString() === 'false' ? 'red-line' : 'green-line'}>{columns.inTheMoney.toString()}</td>
+                                <td>{roundToHundredth(columns["percentChange"])}%</td>
+                                <td style={{color: 'black'}} className={columns.inTheMoney.toString() === 'false' ? 'red-line' : 'green-line'}>{columns.inTheMoney.toString()}</td>
                             </tr>
                         ))}
                     </tbody>
-                </table> : null}
+                </table></> : null}
             </div>
             
             {selectedOptionPrice? <div class='calculation-results'>
                 <h2>Calculation Results</h2>
                 <p>Selected Option Price: ${selectedOptionPrice} * 100 = ${Math.round(selectedOptionPrice * 100)}</p>
+                {showAnalysis ? 
+                <div>meow</div>
+            : null}
+            {showPriceAnalysis()}
             </div>
             : null
         }

@@ -7,9 +7,9 @@ import InsiderTraders from "./InsiderTraders";
 export default function Datasets(){
     
 
-    return (<div className='datasets'> 
-        <Carousel swipeable={true} emulateTouch={true}>
-            <InsiderTraders/>
+    return (<div className='datasets' style={{padding: "10px", maxWidth: "100%"}}> 
+        <Carousel swipeable={true} emulateTouch={true}  style={{maxWidth: "100%"}}>
+            <InsiderTraders className='datesets-insidertrader-component'/>
             <CongressTraders/>
             <WSBMentions/>
             

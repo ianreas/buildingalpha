@@ -8,7 +8,7 @@ export default function InsiderTraders(){
     useEffect(() => {
         try {
         async function fetchInsiderTraders(){
-            const response = await fetch(`https://buildingalpha-new.herokuapp.com/getInsiderTradingData`)
+            const response = await fetch(`https://buildingalpha-new.herokuapp.com/getInsiderTradersFromDB`)
             let data = await response.json()
             console.log(data)
             
@@ -27,10 +27,10 @@ export default function InsiderTraders(){
       <>
       {loading ? <Skeleton count={18}/> :
         <div className='carousel-insider'>
-          <h1 style={{borderBottom: '2px solid black', width: "100%", textAlign: 'center'}}>Insider Traders</h1>
-            <table>
-              <thead>
-                <tr>
+          <h1 style={{borderBottom: '1px solid #57d7ba', width: "100%", textAlign: 'center', color: '#d7d7d7'}}>Insider Traders</h1>
+            <table className='insider-traders-table'>
+              <thead className='insider-traders-table-head'>
+                <tr className='insider-traders-table-head-tr'>
                   <th>Name/Position</th>
                   <th>Stock</th>
                   <th>Purchase/Sale</th>
@@ -39,7 +39,7 @@ export default function InsiderTraders(){
                   <th>Disclosed (EST)</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className='insider-traders-table-body'>
                 {insiderTraders?.map((element, index) => (
                  
                   <tr key={index}>
@@ -48,7 +48,7 @@ export default function InsiderTraders(){
                         <td>{element[0]}<br/>
                      <span>{element[1]}</span>
                     </td>
-                    <td>{element[2]}</td>
+                    <td id='insider-traders-td-stockname'>{element[2]}</td>
                     <td>{element[3]}</td>
                     <td>{element[4]}</td>
                     <td>{element[5]}</td>
@@ -57,7 +57,7 @@ export default function InsiderTraders(){
                     ) : (
                       <>
                         <td>{element[0]}</td>
-                        <td>{element[1]}</td>
+                        <td id='insider-traders-td-stockname'>{element[1]}</td>
                         <td>{element[2]}</td>
                         <td>{element[3]}</td>
                         <td>{element[4]}</td>

@@ -23,7 +23,7 @@ export default function OptionsChainCalculator(){
     }
     
     return (
-        <div>
+        <div className='optionschain-page-wrapper'>
             <h1>Options Chain Calculator</h1>
             <h2>Choose The Strategy{chosenStrategy && <span>. Chosen: {chosenStrategy}</span>}</h2>
             <div>
@@ -38,7 +38,8 @@ export default function OptionsChainCalculator(){
                     <br></br>typically in anticipation of a decline in the underlying asset.</p>
                 </div> 
             </div>
-            {component}
+            <div style={{marginLeft: '10%', marginRight: '10%'}}>{component}</div>
+            
         </div>
     )
 }

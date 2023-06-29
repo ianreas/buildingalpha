@@ -53,7 +53,7 @@ export default function TickerNews(){
       {loading ? <Skeleton count={18}/> : 
         <div className='tickernews-component'>
             <div className='tickernews-component-wrapper'>
-            <h1 style={{borderBottom: '2px solid black', width: "100%", textAlign: 'center'}}>News</h1>
+            <h1 style={{borderBottom: '1px solid #57d7ba', width: "100%", textAlign: 'center', color: '#d7d7d7'}}>News</h1>
             {tickerNews?.map((news, index) => (
                 <div key={index} className='tickernews-item'>
                 <div className='tickernews-item-title'>
@@ -68,7 +68,7 @@ export default function TickerNews(){
                 <div>
                     <img src={news.image_url} alt='article image' width={200} height={200} style={{borderRadius: "10px", objectFit: 'cover'}}/>
                 </div>
-                <div>{calculateTimePassed(news.date)}</div>
+                <div style={{color: "#c8c8c8"}}>{calculateTimePassed(news.date)}</div>
                 </div>
             ))} 
         </div></div>

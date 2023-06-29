@@ -20,20 +20,20 @@ export default function CongressTraders(){
     , [])
 
     return (<div className='carousel-congress'>
-        <h1 style={{borderBottom: '2px solid black', width: "100%", textAlign: 'center'}}>Congress Traders</h1>
+        <h1 style={{borderBottom: '1px solid #57d7ba', width: "100%", textAlign: 'center', color: "#d7d7d7"}}>Congress Traders</h1>
         {congressTraders!==undefined ? 
-                     <table>
+                     <table className='congress-trading-table'>
                         <thead>
-                            <tr>
+                            <tr className='congress-trading-table-head-tr'>
                                 <th>Stock</th>
                                 <th>Politican</th>
                                 <th>Type/Amount</th>
                                 <th>Disclosed</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='congress-trading-tbody'>
                             <tr>
-                                <td>
+                                <td id='congress-trading-td-stockname'>
                                 {congressTraders[0][0]}
                                 </td>
                                 <td>
@@ -50,7 +50,7 @@ export default function CongressTraders(){
                                 
                             </tr>
                             <tr>
-                            <td>
+                            <td id='congress-trading-td-stockname'>
                                 {congressTraders[1][0]}
                                 </td>
                                 <td>
@@ -65,7 +65,7 @@ export default function CongressTraders(){
                                 </td>
                             </tr>
                             <tr>
-                            <td>
+                            <td id='congress-trading-td-stockname'>
                                 {congressTraders[2][0]}
                                 </td>
                                 <td>
@@ -81,7 +81,7 @@ export default function CongressTraders(){
 
                             </tr>
                             <tr>
-                            <td>
+                            <td id='congress-trading-td-stockname'>
                                 {congressTraders[3][0]}
                                 </td>
                                 <td>

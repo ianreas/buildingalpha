@@ -17,7 +17,7 @@ export default function TickerDetails(ticker){
     }, [ticker])
 
     return (
-        <div>
+        <div className='tickerdetails-wrapper'>
             <h1>{details?.results?.name}</h1>
             <h3>{details?.results?.description}</h3>
             <h3>Number of Employees: {details?.results?.total_employees}</h3>

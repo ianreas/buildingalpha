@@ -20,14 +20,14 @@ export default function TradingViewStockScreener(){
       script.async = true;
       script.innerHTML = `
       {
-        "width": "1100",
-        "height": "523",
+        "width": "100%",
+        "height": "100%",
         "defaultColumn": "overview",
         "defaultScreen": "most_capitalized",
         "showToolbar": true,
         "locale": "en",
         "market": "us",
-        "colorTheme": "light"
+        "colorTheme": "dark"
       }`;
         contariner.current.innerHTML = '';
       contariner.current.appendChild(script)

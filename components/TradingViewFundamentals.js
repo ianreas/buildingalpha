@@ -18,7 +18,7 @@ export default function TradingViewFundamentalData(ticker){
           script.async = true;
           script.innerHTML = `
           {
-            "colorTheme": "light",
+            "colorTheme": "dark",
             "isTransparent": false,
             "largeChartUrl": "",
             "displayMode": "regular",

@@ -23,20 +23,25 @@ export default function SectorPerformance(){
         {loading ? <Skeleton count={18}/> :
         <div className='sector-performance'>
             <h1>Sector Performance</h1>
-            <table>
+            <table className='sector-performance-table'>
                 <thead>
-                    <tr>
+                    <tr className='sector-performance-head-tr'>
                         <th>Sector</th>
                         <th>Daily Performance Change</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {data?.map((result, index) => (
+                <tbody className='sector-performance-tbody'>
+                    {data?.map((result, index) => {
+                        const numericValue = parseFloat(result[1]);
+                        const color = numericValue > 0 ? '#57d7ba' : 'red';
+
+                        return (
                         <tr key={index}>
-                            <td>{result[0]}</td>
-                            <td>{result[1]}</td>
+                            <td style={{textAlign: 'center'}}>{result[0]}</td>
+                            <td style={{textAlign: 'center', color: color}}>{result[1]}</td>
                         </tr>
-                    ))}
+                        )
+                    })}
                 </tbody>
             </table>
         </div>
