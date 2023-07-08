@@ -8,7 +8,7 @@ export default function InsiderTraders(){
     useEffect(() => {
         try {
         async function fetchInsiderTraders(){
-            const response = await fetch(`https://buildingalpha-new.herokuapp.com/getInsiderTradersFromDB`)
+            const response = await fetch(`https://buildingalpha-new.herokuapp.com/getInsiderTradingData`)
             let data = await response.json()
             console.log(data)
             
