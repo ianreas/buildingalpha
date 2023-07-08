@@ -35,7 +35,7 @@ export default function InsiderTraders(){
                   <th>Stock</th>
                   <th>Purchase/Sale</th>
                   <th>Shares</th>
-                  <th>Date</th>
+                  <th>Price Per Share</th>
                   <th>Disclosed (EST)</th>
                 </tr>
               </thead>
