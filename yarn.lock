@@ -2826,6 +2826,11 @@
     "@typescript-eslint/types" "5.59.7"
     "eslint-visitor-keys" "^3.3.0"
 
+"@vercel/analytics@^1.0.2":
+  "integrity" "sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg=="
+  "resolved" "https://registry.npmjs.org/@vercel/analytics/-/analytics-1.0.2.tgz"
+  "version" "1.0.2"
+
 "@webassemblyjs/ast@^1.11.5", "@webassemblyjs/ast@1.11.6":
   "integrity" "sha512-IN1xI7PwOvLPgjcf180gC1bqn3q/QaOCwYUahIOhbYUu8KA/3tw2RT/T0Gidi1l7Hhj5D/INhJxiICObqpMu4Q=="
   "resolved" "https://registry.npmjs.org/@webassemblyjs/ast/-/ast-1.11.6.tgz"
