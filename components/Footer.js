@@ -11,7 +11,7 @@ export default function Footer(){
       }
 
     return (
-        <div className='footer' style={{backgroundColor: "#1a1e26", borderTop: "1px solid #e1e1e1"}}>
+        <div className='footer'>
             <ul>
                 <li className='footer-item'>
                     <Link href='/contactme'>Contact Me</Link>

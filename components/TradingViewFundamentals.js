@@ -18,11 +18,11 @@ export default function TradingViewFundamentalData(ticker){
           script.async = true;
           script.innerHTML = `
           {
-            "colorTheme": "dark",
-            "isTransparent": false,
+            "colorTheme": "light",
+            "isTransparent": true,
             "largeChartUrl": "",
             "displayMode": "regular",
-            "width": "480",
+            "width": "100%",
             "height": "830",
             "symbol": "${theTicker}",
             "locale": "en"

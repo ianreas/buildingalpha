@@ -18,10 +18,10 @@ export default function OptionsChainCalculator(){
 
     switch (chosenStrategy){
         case 'long-call-option':
-            component = <OptionChainCalculatorClassicCalls isComponent={false}/>
+            component = <OptionChainCalculatorClassicCalls isComponent={true}/>
             break;
         case 'long-put-option':
-            component = <OptionsChainCalculatorLongPuts isComponent={false}/>
+            component = <OptionsChainCalculatorLongPuts isComponent={true}/>
             break;
     }
 
@@ -39,7 +39,7 @@ export default function OptionsChainCalculator(){
     };
     
     return (
-        <div className='optionschain-page-wrapper'>
+        <div className='optionschain-component-wrapper'>
             <h1>Options Chain Calculator</h1>
             <h2>Choose The Strategy</h2>
             <Select options={options} onChange={handleChange}  styles={customStyles}/>

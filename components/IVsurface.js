@@ -1,26 +1,13 @@
 import {useState, useEffect} from 'react'
 import {Waveform} from '@uiball/loaders'
-import { Suspense } from 'react';
 //import Plot from 'react-plotly.js'
 import dynamic from 'next/dynamic';
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false, })
 
-
-export default function NewThreeD(){
+export default function IVsurface(){
     const [twoDArray, setTwoDArray] = useState()
     const [ticker, setTicker] = useState()
     const [isLoading, setIsLoading] = useState(true)
-
-    /* useEffect(() => {
-        async function fetchData(){
-            const response = await fetch(`http://localhost:5000/getNewThreeDGraph?ticker=${ticker}`);
-            const data = await response.json()
-            console.log(data)
-            //let surfaceData = JSON.parse(data)
-            setTwoDArray({type: 'surface', z: data})
-        }
-        fetchData()
-    }, []) */
 
     useEffect(() => {
         async function fetchData(){
@@ -37,7 +24,6 @@ export default function NewThreeD(){
         fetchData()
     }, []) 
 
-   
 
 
     const handleSubmit = (e) => {
@@ -60,7 +46,7 @@ export default function NewThreeD(){
     }
 
     return (
-        <div className='threed-component-wrapper'>
+        <div className='iv-surface-component-wrapper'>
         <div className='threed-component-text'>
             <h1>Plot Ticker&apos; IV Surface.</h1>
             <p>The volatility surface is a three-dimensional plot showing the implied
@@ -69,7 +55,7 @@ export default function NewThreeD(){
             </p>
         </div>
         <div className='threed-searchplot-wrapper'>
-            <div className='threed-search' style={{position: 'relative', left: '30px'}}>
+            <div className='threed-search'>
             <form onSubmit={handleSubmit} style={{display: 'flex', alignItems: 'center'}}>
             <label htmlFor="title" className="form-label" style={{color: "#D3D3D3", marginRight: '0.5rem'}}>Ticker:  </label>
             <input 
@@ -77,6 +63,7 @@ export default function NewThreeD(){
             className="form-control" 
             placeholder ="Enter stock ticker"
             value={ticker}
+            defaultValue="TSLA"
             onChange={(e)=>setTicker(e.target.value)}
             required
             />
@@ -86,7 +73,7 @@ export default function NewThreeD(){
             </button><span style={{color: 'white', fontSize: '0.8rem', opacity: '80%'}}>(example: TSLA)</span>
             </form>
             </div>
-            {isLoading ? <div style={{marginTop: "8vh"}}><Waveform size={70} color='white' /></div> : 
+            {isLoading ? <div style={{marginTop: "8vh", height: '370px'}}><Waveform size={70} color='white' /></div> :
             <div className='threed-plot-wrapper'>
              <Plot
             data = {[twoDArray]}
@@ -132,7 +119,7 @@ export default function NewThreeD(){
                 pad: 4}}}
                 
             />
-            </div>} 
+            </div>}
         </div>
         </div>
     )

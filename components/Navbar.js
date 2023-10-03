@@ -40,6 +40,7 @@ export default function Navbar(){
 
       const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+        console.log('state changed')
       };
     
       useEffect(() => {
@@ -64,7 +65,7 @@ export default function Navbar(){
             <ul class='nav no-search'>
                 <li class='nav-item'><Link href='/'>Home</Link></li>
                 <li class='nav-item'><Link href='/about'>About</Link></li>
-                <li class='nav-item'><Link href='/ai'>AI</Link></li>
+                <li class='nav-item'><Link href='/marketanalysis'>Market Screener</Link></li>
                 <li class='nav-item'><Link href='/newthreed'>IV Surface</Link></li>
                 <li class='nav-item'><Link href='/optionschaincalculator'>Options</Link></li>
                 {username ?
@@ -73,15 +74,15 @@ export default function Navbar(){
             </ul>
             </nav> : 
               
-            <div className='burger-menu-wrap'>
+            <nav className='burger-menu-wrap'>
               {isMenuOpen ? 
                 null
                 :
               <div className='burger-icon-wrap'  onClick={toggleMenu}>
-                  <CiMenuBurger style={{width: '3rem'}} size={"2em"} color={'white'}/>
+                  <CiMenuBurger style={{width: '3rem'}} size={"1.6em"} color={'white'}/>
               </div>}
-              {isMenuOpen ? 
-              <div className='mobile-navbar-links-wrap' >
+              {isMenuOpen &&
+              <div className={isMenuOpen ? "mobile-navbar-links-wrap active" : "mobile-navbar-links-wrap"}>
                 
               <ul class='mobile-navbar-ul'>
                 <li class='mobilenav'>
@@ -90,18 +91,17 @@ export default function Navbar(){
                 </div>
                 </li>
                <li onClick={toggleMenu} class='mobilenav-item'><Link href='/'>Home</Link></li>
-               <li onClick={toggleMenu} class='mobilenav-item'><Link href='/about'>About</Link></li>
+               <li onClick={toggleMenu} class='mobilenav-item' ><Link href='/about'>About</Link></li>
                <li onClick={toggleMenu} class='mobilenav-item'><Link href='/ai'>AI</Link></li>
                <li onClick={toggleMenu} class='mobilenav-item'><Link href='/newthreed'>IV Surface</Link></li>
                <li onClick={toggleMenu} class='mobilenav-item'><Link href='/optionschaincalculator'>Options</Link></li>
                {username ?
-               <li class='mobilenav-item'><button onClick={signOutNow} style={{border: 'none', outline: 'none', background: 'none', padding: '0', margin: '0', cursor: 'pointer',color: "#e1e1e1"}}>Sign out</button></li>
+               <li class='mobilenav-item'><button onClick={signOutNow} style={{border: 'none', outline: 'none', background: 'none',  margin: '0', cursor: 'pointer',color: "#e1e1e1"}}>Sign out</button></li>
                : <li class='mobilenav-item'><Link href='enter'>Sign In</Link></li>}
              </ul>
              </div>
-               : 
-               null}
-            </div>}
+              }
+            </nav>}
             <div className={`search-bar ${expanded ? 'expanded' : ''}`}>
                 <button className="search-button" onClick={handleButtonClick} style={{color: "#e1e1e1"}}>
                     Search Tickers

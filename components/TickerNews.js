@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import Image from 'next/image'
 import Skeleton from 'react-loading-skeleton'
 
@@ -7,17 +7,57 @@ export default function TickerNews(){
     const [tickerNews, setTickerNews] = useState([])
     const [timeAgo, setTimeAgo] = useState()
     const [loading, setLoading] = useState(true)
+    const [showShadow, setShowShadow] = useState(true);
+    const [shadowBottom, setShadowBottom] = useState(0);
+
+    const divRef = useRef(null);
+    const shadowRef = useRef(null);
+
+    /* const handleScroll = () => {
+      const shadowBottom = shadowRef.current.getBoundingClientRect().bottom;
+      const parentBottom = divRef.current.getBoundingClientRect().bottom;
+  
+      const isShadowAtBottom = shadowBottom >= parentBottom;
+  
+      setShowShadow(!isShadowAtBottom);
+    }; */
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = divRef.current;
+  
+      // Calculate the bottom boundary of the scrollable content
+      const contentBottomPosition = divRef.current.getBoundingClientRect().bottom;
+      // Calculate the top boundary of the shadow
+      /* const shadowTopPosition = shadowRef.current.getBoundingClientRect().top; */
+      const shadowTopPosition = shadowRef.current.getBoundingClientRect().bottom;
+  
+      // If the shadow's top position is greater than or equal to the content's bottom position, hide the shadow
+      if (shadowTopPosition >= contentBottomPosition) {
+        shadowRef.current.style.opacity = "0";
+      } else {
+        shadowRef.current.style.opacity = "1";
+      }
+    };
+
+    useEffect(() => {
+      if (divRef.current){
+      handleScroll(); // Initial adjustment
+    }
+    }, []);
 
     useEffect(() => {
         async function fetchTickerNews(){
             const response = await fetch(`https://stocknewsapi.com/api/v1/category?section=general&items=3&page=1&token=elg153yld6chadlmcl04hfyopyuqxejdymkimjky`)
             const data = await response.json()
-            console.log(data.data)
+            //console.log(data.data)
             setTickerNews(data.data)
             setLoading(false)
         }
         fetchTickerNews()
     }, [])
+
+
+   
 
     function calculateTimePassed(startDateStr) {
         const startDate = new Date(startDateStr);
@@ -51,9 +91,9 @@ export default function TickerNews(){
     return (
       <>
       {loading ? <Skeleton count={18}/> : 
-        <div className='tickernews-component'>
+        <div className='tickernews-component' ref={divRef} onScroll={handleScroll}>
             <div className='tickernews-component-wrapper'>
-            <h1 style={{borderBottom: '1px solid #57d7ba', width: "100%", textAlign: 'center', color: '#d7d7d7'}}>News</h1>
+            <h1 style={{ width: "100%", textAlign: 'center', color: '#d7d7d7', marginTop: '50px'}}>Today&apos; News</h1>
             {tickerNews?.map((news, index) => (
                 <div key={index} className='tickernews-item'>
                 <div className='tickernews-item-title'>
@@ -71,7 +111,7 @@ export default function TickerNews(){
                 <div style={{color: "#c8c8c8"}}>{calculateTimePassed(news.date)}</div>
                 </div>
             ))} 
-        </div></div>
+        </div><div className="bottom-shadow" ref={shadowRef} ></div></div>
                     }
                     </>
     )

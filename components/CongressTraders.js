@@ -8,7 +8,7 @@ export default function CongressTraders(){
         async function fetchCongressTraders(){
             const response = await fetch(`https://buildingalpha-new.herokuapp.com/getCongressTraders`)
             let data = await response.json()
-            console.log(data)
+            //console.log(data)
             
             setCongressTraders(data)
 

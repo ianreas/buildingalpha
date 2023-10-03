@@ -7,9 +7,9 @@ export default function SectorPerformance(){
 
     useEffect(() => {
         async function fetchSectorPerformance(){
-            const response = await fetch('https://buildingalpha-new.herokuapp.com/getSectorPerformance')
+            const response = await fetch('https://buildingalpha-new.herokuapp.com/getSectorPerformanceFromDB')
             const data = await response.json()
-            console.log(data)
+            //console.log(data)
             setData(data)
             setLoading(false)
             

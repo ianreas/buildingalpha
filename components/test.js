@@ -1,6 +1,7 @@
+// TradingViewWidget.jsx
 import { useEffect, useRef, memo } from 'react';
 
-export default function TradingViewWidget(ticker) {
+function TradingViewWidget(ticker) {
   const contariner = useRef();
   const wrapperRef = useRef(null);
   const scriptRef = useRef(null);
@@ -12,8 +13,6 @@ export default function TradingViewWidget(ticker) {
             scriptRef.current.parentNode.removeChild(scriptRef.current);
           }
 
-          //console.log(ticker.ticker)
-
 
 
         const script = document.createElement("script");
@@ -24,13 +23,17 @@ export default function TradingViewWidget(ticker) {
       script.async = true;
       script.innerHTML = `
         {
-          "symbols": "TSLA",
+          "symbols": [
+            [
+              "${ticker.ticker}|1D"
+            ]
+          ],
           "chartOnly": false,
-          "width": 100%,
-          "height": 100%,
+          "width": 1000,
+          "height": 500,
           "locale": "en",
-          "colorTheme": "dark",
-          "autosize": true,
+          "colorTheme": "light",
+          "autosize": false,
           "showVolume": false,
           "showMA": false,
           "hideDateRanges": false,
@@ -47,7 +50,6 @@ export default function TradingViewWidget(ticker) {
           "maLineColor": "#2962FF",
           "maLineWidth": 1,
           "maLength": 9,
-          "backgroundColor": "rgba(171, 71, 188, 1)",
           "lineWidth": 2,
           "lineType": 0,
           "dateRanges": [
@@ -82,10 +84,4 @@ export default function TradingViewWidget(ticker) {
   );
 }
 
-//export default memo(TradingViewWidget);
-
-/* "symbols": [
-  [
-    "${ticker.ticker}|1D"
-  ]
-], */
+export default memo(TradingViewWidget);

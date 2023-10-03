@@ -10,7 +10,7 @@ export default function InsiderTraders(){
         async function fetchInsiderTraders(){
             const response = await fetch(`https://buildingalpha-new.herokuapp.com/getInsiderTradersFromDB`)
             let data = await response.json()
-            console.log(data)
+            //console.log(data)
             
             setInsiderTraders(data?.slice(0,10))
             setLoading(false)
@@ -27,7 +27,7 @@ export default function InsiderTraders(){
       <>
       {loading ? <Skeleton count={18}/> :
         <div className='carousel-insider'>
-          <h1 style={{borderBottom: '1px solid #57d7ba', width: "100%", textAlign: 'center', color: '#d7d7d7'}}>Insider Traders</h1>
+          <h1 style={{ width: "100%", textAlign: 'center', color: '#d7d7d7'}}>Today&apos; Insider Traders</h1>
             <table className='insider-traders-table'>
               <thead className='insider-traders-table-head'>
                 <tr className='insider-traders-table-head-tr'>

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-
 import { useEffect } from 'react'
+import he from 'he';
 export default function WSBMentions(){
     const [data, setData] = useState([]);
 
@@ -9,7 +9,7 @@ export default function WSBMentions(){
             const response = await fetch(`https://buildingalpha-new.herokuapp.com/wsbMentions`)
             let data = await response.json()
               console.log(data)
-            setData(data?.results?.slice(0, 6))
+            setData(data?.results?.slice(0, 10))
         }
         fetchWSB()
     }, [])  
@@ -32,7 +32,7 @@ export default function WSBMentions(){
                         <tr key={index}>
                             <td id="wsb-td-stockname">{result.ticker}</td>
                             <td>{result.mentions}</td>
-                            <td>{result.name}</td>
+                            <td>{he.decode(result.name)}</td>
                             <td>{result.rank_24h_ago}</td>
                         </tr>
                     ))}
